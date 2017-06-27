@@ -21,7 +21,7 @@ def pos_from_gridpos_offset(cfg, gridpos, pred_offset):
 
 
 def make_nms_grid(nms_radius):
-    nms_radius = math.ceil(nms_radius)
+    nms_radius = int(math.ceil(nms_radius))
     dist_grid = np.zeros([2 * nms_radius + 1, 2 * nms_radius + 1], dtype=np.uint8)
     for yidx in range(dist_grid.shape[0]):
         for xidx in range(dist_grid.shape[1]):

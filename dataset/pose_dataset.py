@@ -83,7 +83,7 @@ class DataItem:
     pass
 
 
-class PoseDataset:
+class PoseDataset(object):
     def __init__(self, cfg):
         self.cfg = cfg
         self.data = self.load_dataset() if cfg.dataset else []
