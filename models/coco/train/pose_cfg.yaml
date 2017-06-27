@@ -1,4 +1,4 @@
-dataset: /path/to/coco/dataset
+dataset: /raid/datasets/coco
 dataset_phase: train2014
 dataset_ann: person_keypoints  # 'image_info' or 'person_keypoints'
 dataset_type: coco

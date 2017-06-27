@@ -16,3 +16,4 @@ lib/coco/PythonAPI/pycocotools/_mask.c
 lib/coco/PythonAPI/pycocotools/_mask.so
 
 models/coco/pairwise/
+*.ckpt

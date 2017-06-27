@@ -8,7 +8,7 @@ from config import load_config
 from dataset.factory import create as create_dataset
 from nnet.net_factory import pose_net
 from nnet.pose_net import get_batch_spec
-from util.logging import setup_logging
+from util._logging import setup_logging
 
 
 class LearningRate(object):
@@ -93,7 +93,9 @@ def train():
     restorer = tf.train.Saver(variables_to_restore)
     saver = tf.train.Saver(max_to_keep=5)
 
-    sess = tf.Session()
+    config = tf.ConfigProto()
+    config.gpu_options.per_process_gpu_memory_fraction = 0.5
+    sess = tf.Session(config=config)
 
     coord, thread = start_preloading(sess, enqueue_op, dataset, placeholders)
 

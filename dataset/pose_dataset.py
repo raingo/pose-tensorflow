@@ -82,6 +82,8 @@ def get_pairwise_index(j_id, j_id_end, num_joints):
 class DataItem:
     pass
 
+def _round(tgt):
+    return int(tgt)
 
 class PoseDataset(object):
     def __init__(self, cfg):
@@ -340,12 +342,12 @@ class PoseDataset(object):
                 j_y = np.asscalar(joint_pt[1])
 
                 # don't loop over entire heatmap, but just relevant locations
-                j_x_sm = round((j_x - half_stride) / stride)
-                j_y_sm = round((j_y - half_stride) / stride)
-                min_x = round(max(j_x_sm - dist_thresh - 1, 0))
-                max_x = round(min(j_x_sm + dist_thresh + 1, width - 1))
-                min_y = round(max(j_y_sm - dist_thresh - 1, 0))
-                max_y = round(min(j_y_sm + dist_thresh + 1, height - 1))
+                j_x_sm = _round((j_x - half_stride) / stride)
+                j_y_sm = _round((j_y - half_stride) / stride)
+                min_x = _round(max(j_x_sm - dist_thresh - 1, 0))
+                max_x = _round(min(j_x_sm + dist_thresh + 1, width - 1))
+                min_y = _round(max(j_y_sm - dist_thresh - 1, 0))
+                max_y = _round(min(j_y_sm + dist_thresh + 1, height - 1))
 
                 for j in range(min_y, max_y + 1):  # range(height):
                     pt_y = j * stride + half_stride
